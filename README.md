@@ -10,11 +10,14 @@
 - Create Routes > Route=/ -> Body > RouteChildren
 - Create an Outlet in Body component
 - Create a Footer
-
-Component design:
-Body
-Navbar
-Route=/ => Feed
-Route=/login => Login
-Route=/connections => Connections
-Route=/profile => Profile
+- Create a login page
+- Install axios
+- CORS - install cors in backend => add middleware to app.js with configurations: origin, credentials: true
+- Whenever making an API call from the frontend, pass axios => {withCredentails: true}.
+  Component design:
+  Body
+  Navbar
+  Route=/ => Feed
+  Route=/login => Login
+  Route=/connections => Connections
+  Route=/profile => Profile
