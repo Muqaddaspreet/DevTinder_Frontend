@@ -1,23 +1,31 @@
 import React from "react";
 import { useState } from "react";
 import axios from "axios";
+import { useDispatch } from "react-redux";
+import { addUser } from "../utils/userSlice";
+import { useNavigate } from "react-router";
+import { BASE_URL } from "../utils/constants";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleLogin = async () => {
     // Handle login logic here
     try {
       const res = await axios.post(
-        "http://localhost:3000/login",
+        BASE_URL + "/login", // Using BASE_URL from constants
         {
           email,
           password,
         },
         { withCredentials: true } // For whitelisting our domains.
       );
-      console.log("Login successful", res.data);
+      console.log("Login successful", res?.data?.user);
+      dispatch(addUser(res?.data?.user)); // Dispatch an action to add user to Redux store
+      return navigate("/"); // Navigate to home page after login
     } catch (error) {
       console.error("Login failed", error);
     }

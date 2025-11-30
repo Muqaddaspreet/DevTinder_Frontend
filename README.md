@@ -14,10 +14,16 @@
 - Install axios
 - CORS - install cors in backend => add middleware to app.js with configurations: origin, credentials: true
 - Whenever making an API call from the frontend, pass axios => {withCredentails: true}.
-  Component design:
-  Body
-  Navbar
-  Route=/ => Feed
-  Route=/login => Login
-  Route=/connections => Connections
-  Route=/profile => Profile
+- Install react-redux toolkit => configureStore => Provider => createSlice => add reducer to the store.
+- Add redux dev tools in chrome
+- Login to see the incoming data
+- Navbar updates as soon as user logs in
+- Refactor code to add constants file + add a components folder
+
+Component design:
+Body
+Navbar
+Route=/ => Feed
+Route=/login => Login
+Route=/connections => Connections
+Route=/profile => Profile
