@@ -19,6 +19,10 @@
 - Login to see the incoming data
 - Navbar updates as soon as user logs in
 - Refactor code to add constants file + add a components folder
+- You should not be able to access other routes without login
+- If the token is not present, Redirect the user to the login page
+- Logout
+- Profile
 
 Component design:
 Body
