@@ -21,8 +21,11 @@
 - Refactor code to add constants file + add a components folder
 - You should not be able to access other routes without login
 - If the token is not present, Redirect the user to the login page
-- Logout
+- Logout feature
 - Profile
+- Get the feed and add the feed in the store
+- Build the user card on feed
+-
 
 Component design:
 Body

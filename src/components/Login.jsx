@@ -9,6 +9,7 @@ import { BASE_URL } from "../utils/constants";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -27,6 +28,7 @@ const Login = () => {
       dispatch(addUser(res?.data?.user)); // Dispatch an action to add user to Redux store
       return navigate("/"); // Navigate to home page after login
     } catch (error) {
+      setError(error?.response?.data || "Login failed");
       console.error("Login failed", error);
     }
   };
@@ -51,6 +53,7 @@ const Login = () => {
             onChange={(e) => setPassword(e.target.value)}
           />
           <div className="card-actions justify-center w-full">
+            <p className="text-red-600">{error}</p>
             <button
               className="btn bg-red-500 w-full max-w-xs"
               onClick={handleLogin}
