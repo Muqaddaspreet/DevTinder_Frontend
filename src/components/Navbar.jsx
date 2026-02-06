@@ -18,7 +18,7 @@ const Navbar = () => {
         {},
         {
           withCredentials: true,
-        }
+        },
       );
       dispatch(removeUser()); // Clear user data from redux store if needed.
       navigate("/login");
@@ -64,7 +64,10 @@ const Navbar = () => {
                 </Link>
               </li>
               <li>
-                <Link>Settings</Link>
+                <Link to="/connections">Connections</Link>
+              </li>
+              <li>
+                <Link to="/requests">Requests Received</Link>
               </li>
               <li>
                 <Link onClick={handleLogout}>Logout</Link>

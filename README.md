@@ -25,6 +25,10 @@
 - Profile
 - Get the feed and add the feed in the store
 - Build the user card on feed
+- Edit Profile feature
+- Show toast message on save of profile
+- See all the connections
+- see all the connection requests
 -
 
 Component design:
