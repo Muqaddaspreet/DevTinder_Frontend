@@ -42,21 +42,21 @@ const Connections = () => {
   return (
     <div className="justify-center my-10">
       <h1 className="text-3xl text-center font-bold">Connections</h1>
-      <div className="flex mt-10 justify-center">
+      <div className="flex flex-wrap mt-10 justify-center">
         {connections.map((connection) => {
           const { firstName, lastName, about, photoUrl, age, gender } =
             connection;
           return (
             <div
               key={connection._id}
-              className="bg-base-200 my-2 sm:w-1/2 lg:w-1/3 mx-2"
+              className="bg-base-200 my-2 sm:w-3/5 lg:w-1/3 mx-2 w-full"
             >
               <div className="flex items-center p-5">
                 <img
                   src={photoUrl}
-                  className="sm:w-30 sm:h-30 rounded-full shadow-2xl"
+                  className="w-30 h-30 rounded-full shadow-2xl"
                 />
-                <div className=" pl-2">
+                <div className="w-3/5 pl-2">
                   <h1 className="text-xl font-bold">
                     {firstName} {lastName}
                   </h1>

@@ -10,8 +10,8 @@ const Feed = () => {
   const dispatch = useDispatch();
 
   const getFeed = async () => {
-    if (feed) return; // If feed already exists in the store, do not fetch again
     try {
+      // Implement get feed functionality here
       const res = await axios.get(BASE_URL + "/feed", {
         withCredentials: true,
       });
@@ -27,7 +27,18 @@ const Feed = () => {
     getFeed();
   }, []);
 
+  if (!feed) return; // If feed is null, return nothing
+
+  if (feed.length === 0) {
+    return (
+      <div className="flex justify-center my-10">
+        <h1 className="text-2xl font-bold">No users in feed</h1>
+      </div>
+    );
+  }
+
   return (
+    // Only then return the user card if teh feed is not null
     feed && (
       <div className="flex justify-center my-10">
         <UserCard user={feed[0]} /> {/* Render the first user from the feed*/}

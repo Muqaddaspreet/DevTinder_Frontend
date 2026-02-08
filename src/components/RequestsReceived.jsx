@@ -1,12 +1,30 @@
 import axios from "axios";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addRequests } from "../utils/requestSlice";
+import { addRequests, removeRequest } from "../utils/requestSlice";
 import { BASE_URL } from "../utils/constants";
 
 const RequestsReceived = () => {
   const dispatch = useDispatch();
   const requests = useSelector((store) => store.requests); // Get requests from the Redux store
+
+  const reviewRequest = async (status, requestId) => {
+    try {
+      // Implement review request functionality here (accept/reject)
+      const res = await axios.post(
+        BASE_URL + "/request/review/" + status + "/" + requestId,
+        {},
+        {
+          withCredentials: true,
+        },
+      );
+      console.log(res?.data);
+      // Update the Redux store based on the response if needed
+      dispatch(removeRequest(requestId));
+    } catch (err) {
+      console.error("Error reviewing request:", err);
+    }
+  };
 
   const fetchRequestsReceived = async () => {
     try {
@@ -41,7 +59,7 @@ const RequestsReceived = () => {
   return (
     <div className="justify-center my-10">
       <h1 className="text-3xl text-center font-bold">Requests</h1>
-      <div className="flex mt-10 justify-center">
+      <div className="flex flex-wrap mt-10 justify-center">
         {requests.map((request) => {
           const { firstName, lastName, about, photoUrl, age, gender } =
             request.senderId;
@@ -68,8 +86,18 @@ const RequestsReceived = () => {
                 </div>
               </div>
               <div className="card-actions w-full justify-center md:justify-end mb-2 pr-5">
-                <button className="btn btn-primary w-20">Reject</button>
-                <button className="btn btn-secondary w-20">Accept</button>
+                <button
+                  className="btn btn-primary w-20 md:w-14"
+                  onClick={() => reviewRequest("rejected", request._id)}
+                >
+                  Reject
+                </button>
+                <button
+                  className="btn btn-secondary w-20 md:w-14"
+                  onClick={() => reviewRequest("accepted", request._id)}
+                >
+                  Accept
+                </button>
               </div>
             </div>
           );
