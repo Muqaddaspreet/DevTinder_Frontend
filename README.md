@@ -41,3 +41,34 @@ Route=/ => Feed
 Route=/login => Login
 Route=/connections => Connections
 Route=/profile => Profile
+
+# Deployment
+
+- Signup on aWS
+- Launch Instance
+- chmod 400 <secret>.pem
+- ssh -i "Mywebserver-secret.pem" ubuntu@ec2-54-145-11-5.compute-1.amazonaws.com
+- Install node version 22.18.0
+- git clone -> dependencies
+- Frontend
+  - npm i
+  - npm run build
+  - sudo apt update
+  - sudo apt install nginx
+  - sudo sytemctl start nginx
+  - sudo sytemctl enable nginx
+  - Copy code from dist(build files) to var/www/html
+  - sudo scp -r dist/\* /ar/www/html
+  - Enable port :80 of our instance
+- Backend
+  - npm install
+  - allowed ec2 instance public ip on mongodb server.
+  - installed npm i pm2 -g
+  - pm2 start <name> -- start
+  - pm2 start <name> --name "<newName>" -- start
+  - pm2 logs, pm2 flush <name>, pm2 list
+  - pm2 stop <name>, pm2 delete <name>
+  - config nginx - /etc/nginx/sites-available/default
+  - restart nginx - sudo systemctl restart nginx
+  - modify the BASE_URL to /api in frontend.
+-
