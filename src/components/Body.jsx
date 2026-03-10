@@ -36,7 +36,7 @@ const Body = () => {
       <div className="grow">
         <Navbar />
         <Outlet />
-        <h1 className="bg-red-500 text-white p-4">Hello World</h1>
+        <h1 className="bg-red-500 text-red-500 p-4">Hello World</h1>
       </div>
       {/* Footer always stays at bottom */}
       <Footer />
