@@ -94,3 +94,16 @@ Route=/profile => Profile
   - Write code for sesClient
   - Write code for sending email address
   - Make the email dynamic by passing more parameters
+
+# Scheduling cron jobs in NodeJS
+
+- Installing node-cron
+- Learning about cron expressions syntax - crontab.guru
+- Schedula a job
+- date-fns
+- Find all the unique emailIds who have got friend connection request in the previous day.
+- Send email
+- Explore queue mechanism to send bulk emails.
+- Amazon SES Bulk Emails
+- Make send email function dynamic
+- bee-queue and bull npm package
